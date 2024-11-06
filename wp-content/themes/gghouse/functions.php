@@ -15,3 +15,16 @@ function my_theme_register_menus()
     ));
 }
 add_action('after_setup_theme', 'my_theme_register_menus');
+
+
+
+
+
+// Đăng ký menu cho footer
+function my_theme_register_footer_menu()
+{
+    register_nav_menus(array(
+        'footer-menu' => 'Footer Menu', // Tên của menu
+    ));
+}
+add_action('after_setup_theme', 'my_theme_register_footer_menu');
