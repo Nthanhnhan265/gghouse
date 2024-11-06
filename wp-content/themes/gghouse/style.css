@@ -1,0 +1,345 @@
+/*
+Theme Name: My Theme
+Theme URI: https://example.com/my-theme
+Author: Your Name
+Author URI: https://example.com
+Description: A custom WordPress theme with all required pages
+Version: 1.0
+*/
+
+
+/* Banner */
+.homepage-banner {
+    background-image: url('https://via.placeholder.com/1200x600');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.homepage-banner h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.homepage-banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.homepage-banner .btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+.homepage-banner .btn:hover {
+    background-color: #218838;
+}
+
+/* Danh mục */
+.categories-section {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+}
+
+.categories-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category {
+    width: 30%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.category img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.category h3 {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.category p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Sản phẩm */
+.products-section {
+    padding: 50px 20px;
+}
+
+.products-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.products-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-item {
+    width: 30%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-item h3 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.product-item p {
+    font-size: 1.1em;
+    color: #28a745;
+}
+
+/* Testimonials */
+.testimonial-section {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+}
+
+.testimonials {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    width: 45%;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.testimonial strong {
+    font-size: 1.2em;
+    color: #28a745;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* nav styles */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: rgb(5, 5, 116);
+    padding-left: 20px;
+}
+
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+.nav__link {
+    position: fixed;
+    width: 94%;
+    top: 5rem;
+    left: 18px;
+    background-color: lightblue;
+}
+
+.nav__link ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__link li {
+    list-style: none;
+}
+
+.nav__link a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.nav__link a:hover {
+    background-color: lightcoral;
+}
+
+.hide {
+    display: none;
+}
+
+
+@media screen and (min-width: 600px) {
+    .nav__link {
+        display: block;
+        position: static;
+        width: auto;
+        margin-right: 20px;
+        background: none;
+    }
+
+    .nav__link ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav__link a {
+        display: inline-block;
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+/* Footer Container */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-widgets {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.footer-widget {
+    width: 30%;
+    padding: 0 15px;
+}
+
+.footer-widget h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.footer-widget p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Footer Menu */
+.footer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 10px;
+}
+
+.footer-menu li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-menu li a:hover {
+    color: #28a745;
+    /* Màu sắc khi hover */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+/* Responsive - Đảm bảo footer đẹp trên thiết bị di động */
+@media (max-width: 768px) {
+    .footer-widgets {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-widget {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+    }
+}
