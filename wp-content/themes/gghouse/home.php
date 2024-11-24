@@ -130,15 +130,14 @@ get_header(); ?>
 
     <!-- Phân trang -->
     <?php
-    echo '<div class="pagination">';
-    echo paginate_links(array(
-      'prev_text' => __('« Trước'),
-      'next_text' => __('Sau »'),
-      'current'   => max(1, get_query_var('paged')),
-      'total'     => $wp_query->max_num_pages,
-      'type'      => 'list'
-    ));
-    echo '</div>';
+    if (have_posts()) :
+        while (have_posts()) : the_post();
+            get_template_part('template-parts/content', get_post_format());
+        endwhile;
+        the_posts_navigation();
+    else :
+        get_template_part('template-parts/content', 'none');
+    endif;
     ?>
 
   <?php else : ?>

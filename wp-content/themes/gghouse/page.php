@@ -2,7 +2,7 @@
 
 <div class="static-page">
     <?php
-    while ( have_posts() ) : the_post();
+    while (have_posts()) : the_post();
         the_content();
     endwhile;
     ?>
