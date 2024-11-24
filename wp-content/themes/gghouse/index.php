@@ -3,6 +3,6 @@
 <main>
     <h1>Welcome to My Theme</h1>
     <p>This is a custom WordPress theme.</p>
-</main>
+</main> 
 
 <?php get_footer(); ?>
