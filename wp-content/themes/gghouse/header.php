@@ -10,6 +10,13 @@
 <header>
     <h1><?php bloginfo( 'name' ); ?></h1>
     <nav>
-        <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
-    </nav>
+    <?php 
+    wp_nav_menu(array(
+        'theme_location' => 'main-menu',
+        'menu_class' => 'main-nav',
+        'container' => false
+    )); 
+    ?>
+</nav>
+
 </header>
