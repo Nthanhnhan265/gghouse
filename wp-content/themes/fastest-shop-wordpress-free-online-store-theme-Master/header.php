@@ -23,7 +23,7 @@
 <body <?php body_class(); ?> >
  <?php wp_body_open(); ?>
 <div id="page" class="site">
-
+	
     <?php
 	/**
 	* Hook - fastest_shop_site_header

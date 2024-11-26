@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( array('fastest-shop-blogwrap') ); ?>>
-
+	
  	 <?php
     /**
     * Hook - fastest_shop_posts_blog_media.
