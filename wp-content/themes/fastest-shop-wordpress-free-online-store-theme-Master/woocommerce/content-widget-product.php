@@ -1,3 +1,4 @@
+hello
 <?php
 /**
  * The template for displaying product widget entries.
@@ -14,44 +15,44 @@
  * @version 4.6.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
 global $product;
 
-if ( ! is_a( $product, 'WC_Product' ) ) {
+if (! is_a($product, 'WC_Product')) {
 	return;
 }
 
 ?>
 <li>
-<div class="row align-items-center">
+	<div class="row align-items-center">
 
-	<?php do_action( 'woocommerce_widget_product_item_start', $args ); ?>
-	<div class="col-md-3 col-sm-4 col-3">
-		<a href="<?php echo esc_url( $product->get_permalink() ); ?>">
-			<?php echo wp_kses_post( $product->get_image() ); ?>
-			
-		</a>
+		<?php do_action('woocommerce_widget_product_item_start', $args); ?>
+		<div class="col-md-3 col-sm-4 col-3">
+			<a href="<?php echo esc_url($product->get_permalink()); ?>">
+				<?php echo wp_kses_post($product->get_image()); ?>
+
+			</a>
+		</div>
+		<div class="col-md-9 col-sm-8 col-8">
+
+			<a href="<?php echo esc_url($product->get_permalink()); ?>" class="product-link">
+				<span class="product-title"><?php echo esc_html($product->get_name()); ?></span>
+
+			</a>
+			<?php if (! empty($show_rating)) : ?>
+				<?php echo wp_kses_post(wc_get_rating_html($product->get_average_rating())); ?>
+			<?php endif; ?>
+
+			<?php echo wp_kses_post($product->get_price_html()); ?>
+		</div>
+
+		<?php do_action('woocommerce_widget_product_item_end', $args); ?>
 	</div>
-    <div class="col-md-9 col-sm-8 col-8">
 
-    <a href="<?php echo esc_url( $product->get_permalink() ); ?>" class="product-link">
-   		 <span class="product-title"><?php echo esc_html( $product->get_name() ); ?></span>
 
-    </a>
-	<?php if ( ! empty( $show_rating ) ) : ?>
-		<?php echo wp_kses_post( wc_get_rating_html( $product->get_average_rating() ) ); ?>
-	<?php endif; ?>
 
-	<?php echo wp_kses_post( $product->get_price_html() ); ?>
-    </div>
 
-	<?php do_action( 'woocommerce_widget_product_item_end', $args ); ?>
-</div>
-
-	
-
-	
 </li>
