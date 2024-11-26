@@ -66,4 +66,3 @@ endif;
  */
 do_action('fastest_shop_container_wrap_end',  esc_attr($layout));
 get_footer();
-?>

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+2024-11-13T02:39:46+00:00 INFO Payment gateway enabled: "Cash on delivery"
+=======
+>>>>>>> a14c097905f07dbf378868bd054ba4d49a7e4047
 2024-11-13T16:18:45+00:00 WARNING Empty patterns received from the PTK Pattern Store
 2024-11-13T16:19:00+00:00 WARNING Empty patterns received from the PTK Pattern Store
 2024-11-13T16:19:00+00:00 WARNING Empty patterns received from the PTK Pattern Store
@@ -40,3 +46,7 @@
 2024-11-13T16:20:18+00:00 WARNING Empty patterns received from the PTK Pattern Store
 2024-11-13T16:20:19+00:00 WARNING Empty patterns received from the PTK Pattern Store
 2024-11-13T16:20:20+00:00 WARNING Empty patterns received from the PTK Pattern Store
+<<<<<<< HEAD
+=======
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
+>>>>>>> a14c097905f07dbf378868bd054ba4d49a7e4047
