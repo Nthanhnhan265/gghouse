@@ -1,0 +1,48 @@
+2024-11-13T16:19:17+00:00 DEBUG POST: https://ads.tiktok.com/marketing_api/api/developer/app/create_auto_approve/
+
+{"business_platform":"PROD","smb_id":"tt4b_woocommerce_6734d1854c3eahttplocalhostgghousewp-admin","smb_name":"PROD","redirect_url":"http:\/\/localhost\/gghouse\/wp-admin\/"}
+ ajax: no
+2024-11-13T16:19:18+00:00 DEBUG Tt4b_Mapi_Class::create_open_source_app: Response: 
+
+HTTP/1.1 502 Bad Gateway
+Content-Type: text/plain; charset=utf-8
+Content-Length: 119
+X-Tt-Logid: 20241113161916D384C84063C2CB85FD6B
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Server-Timing: inner; dur=4
+x-tt-trace-host: 0174bf9e509deaddd21513b289602219304bafb5fa3e2cba531655c1fc925049205084ce84b5f5f95edb82874265476c0d4e6df4c1f0e3d36de63bb3625751d43f5d7ac9d1001cb339622ddfc7968a61dc09b5df242de77f4196aaeb0809031921
+x-tt-trace-id: 00-241113161916D384C84063C2CB85FD6B-708629FF81DEF4CB-00
+Server: TLB
+Date: Wed, 13 Nov 2024 16:19:17 GMT
+X-Cache: TCP_MISS from a23-48-172-26.deploy.akamaitechnologies.com (AkamaiGHost/11.7.1-5d2a058efeda81c5505a169a6e16c38e) (-)
+Connection: close
+x-tt-trace-tag: id=16;cdn-cache=miss;type=dyn
+Server-Timing: cdn-cache; desc=MISS, edge; dur=4, origin; dur=9
+X-Origin-Response-Time: 10,23.48.172.26
+X-Akamai-Request-ID: 7f411eb
+
+Bad Gateway | KRAKEND.BACKEND/3 - request failed/320202:connection is closed by peer while being in the connection pool
+
+2024-11-13T16:19:18+00:00 DEBUG Tt4b_Mapi_Class::create_open_source_app: Response: 
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Tt-Logid: 202411131619169B3DE2234E840DB69CDD,202411131619169B3DE2234E840DB69CDD
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Server-Timing: inner; dur=67
+x-tt-trace-host: 0174bf9e509deaddd21513b2896022193073c77d0ec22098ed8ae6a32a7dff55ab748b9d814213aaf12c4216ee418e9a11393f48616ee6a24aada368284dbce5fb2be3aef58524ae0720de1d447739f16fba84228af8aaf6827bcaa3261f7c21a2
+x-tt-trace-id: 00-2411131619169B3DE2234E840DB69CDD-50250CD50F621BCD-00
+Server: TLB
+Content-Encoding: gzip
+Date: Wed, 13 Nov 2024 16:19:17 GMT
+Content-Length: 207
+X-Cache: TCP_MISS from a23-48-172-30.deploy.akamaitechnologies.com (AkamaiGHost/11.6.5-0c617a4be13e71cac2c90d10d87ecf54) (-)
+Connection: close
+Vary: Accept-Encoding
+x-tt-trace-tag: id=16;cdn-cache=miss;type=dyn
+Server-Timing: cdn-cache; desc=MISS, edge; dur=4, origin; dur=75
+X-Origin-Response-Time: 75,23.48.172.30
+X-Akamai-Request-ID: a9485b3b
+
+{"code":0,"msg":"ok","data":{"app_secret":"e6a8bbc8e4f148e89af8eca1a6a1a78ac2f8c5bc","redirect_uri":"http:\/\/localhost\/gghouse\/wp-admin\/","external_data_key":"69ecf819-2429-4f71-a4d9-c71eacea2b58","app_id":"7436799257513820178"}}
+

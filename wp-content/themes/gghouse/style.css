@@ -1,12 +1,200 @@
 /*
 Theme Name: My Theme
 Theme URI: https://example.com/my-theme
-Author: Your Name
+Author: Group 2 
 Author URI: https://example.com
 Description: A custom WordPress theme with all required pages
 Version: 1.0
 Template: gghouse
 */
+/* Global Styling */
+/* ... Your existing styles ... */
+.footer-widget {
+    padding: 0 !important;
+}
+
+.woocommerce .columns-4 {
+    margin: 20px !important;
+}
+
+.product-item {
+    /* ... Your existing styles ... */
+    position: relative;
+    /* Important for positioning the hover element */
+}
+
+.product-image-link {
+    display: block;
+    /* Make the link fill the container */
+    position: relative;
+    /* Important for absolute positioning of the button */
+}
+
+.add-to-cart-hover {
+    position: absolute;
+    top: 0;
+    height: 60%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Semi-transparent background */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    opacity: 0;
+    /* Hide the button initially */
+    transition: opacity 0.3s ease;
+    /* Add a smooth transition */
+    pointer-events: none;
+    /* Prevent the button from being clickable when hidden */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-item:hover .add-to-cart-hover {
+    opacity: 1;
+    /* Show the button on hover */
+    pointer-events: auto;
+    /* Make the button clickable on hover */
+}
+
+.view-more {
+    display: block;
+    /* Make it a block element for better styling */
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 10px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    opacity: 65%;
+    /* Add some space above the button */
+    /* ... Your other button styles ... */
+}
+
+.view-more:hover {
+    opacity: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Banner Section */
+#banner {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+
+#banner div {
+    padding: 200px 0;
+}
+
+/* Categories Section */
+#categories {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+/* Category Containers */
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Product Section */
+#products {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+/* Product Containers */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Individual Category and Product Cards */
+.category {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+}
+
+.category,
+.product {
+    flex: 1 1 250px;
+    /* max-width: 300px; */
+    text-align: center;
+}
+
+.product img,
+.category img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Product Price Styling */
+.product p {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.price del {
+    display: block;
+    font-size: 1rem;
+    color: #00000042;
+}
+
+.price ins {
+    font-size: 1.75rem;
+    color: #28a745;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+
+.product p.text-muted {
+    font-size: 18px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    ul.products {
+        grid-template-columns: auto auto !important;
+    }
+
+    .category-container,
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 /* Banner */
 .homepage-banner {
@@ -59,9 +247,41 @@ Template: gghouse
 }
 
 .category {
+<<<<<<< HEAD
   width: 30%;
   text-align: center;
   margin-bottom: 30px;
+=======
+    width: 30%;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all .5s;
+}
+
+ul.products::before,
+ul.products::after {
+    display: none !important;
+}
+
+ul.products {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    margin: 0 25px !important;
+    gap: 10px;
+}
+
+ul>.product {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ul.product h2 {
+    text-transform: uppercase;
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 }
 
 .category img {
@@ -70,8 +290,25 @@ Template: gghouse
 }
 
 .category h3 {
+<<<<<<< HEAD
   margin-top: 10px;
   font-size: 1.5em;
+=======
+    margin: 10px 0;
+    font-size: 1.5em;
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
+}
+
+.category a {
+    margin-top: 10px;
+    margin: 0 60px;
+    transition: all .5s;
+}
+
+.category a:hover {
+    opacity: 100% !important;
+    box-shadow: 0 0 10px;
+
 }
 
 .category p {
@@ -96,6 +333,7 @@ Template: gghouse
 }
 
 .product-item {
+<<<<<<< HEAD
   width: 30%;
   text-align: center;
   margin-bottom: 30px;
@@ -114,6 +352,36 @@ Template: gghouse
 .product-item p {
   font-size: 1.1em;
   color: #28a745;
+=======
+    width: 30%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-item img {
+    margin: 1% 0;
+    width: 99%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 8px;
+
+}
+
+.product-item h3 {
+    font-size: 1.2em;
+    margin: 0px;
+}
+
+.product-item p {
+    font-size: 1.1em;
+    color: #28a745;
+    text-align: left;
+    margin: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 }
 
 /* Testimonials */
@@ -149,6 +417,7 @@ Template: gghouse
   color: #28a745;
 }
 
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
   margin: 0;
@@ -165,6 +434,12 @@ a {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
+=======
+a {
+    text-decoration: none;
+    color: #000;
+
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 }
 
 /* nav styles */
@@ -227,6 +502,7 @@ a {
 }
 
 @media screen and (min-width: 600px) {
+<<<<<<< HEAD
   .nav__link {
     display: block;
     position: static;
@@ -234,6 +510,19 @@ a {
     margin-right: 20px;
     background: none;
   }
+=======
+    ul.products .columns-4 {
+        margin: 0 20px !important;
+    }
+
+    .nav__link {
+        display: block;
+        position: static;
+        width: auto;
+        margin-right: 20px;
+        background: none;
+    }
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 
   .nav__link ul {
     display: flex;
@@ -321,10 +610,22 @@ a {
 
 /* Responsive - Đảm bảo footer đẹp trên thiết bị di động */
 @media (max-width: 768px) {
+<<<<<<< HEAD
   .footer-widgets {
     flex-direction: column;
     align-items: center;
   }
+=======
+    ul.products {
+        margin: 0 10px !important;
+
+    }
+
+    .footer-widgets {
+        flex-direction: column;
+        align-items: center;
+    }
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 
   .footer-widget {
     width: 100%;
