@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying archive pages
  *
@@ -10,16 +11,16 @@
 get_header();
 $layout = fastest_shop_get_option('blog_layout');
 /**
-* Hook - container_wrap_start 		- 5
-*
-* @hooked fastest_shop_container_wrap_start
-*/
- do_action( 'fastest_shop_container_wrap_start',esc_attr( $layout ));
+ * Hook - container_wrap_start 		- 5
+ *
+ * @hooked fastest_shop_container_wrap_start
+ */
+do_action('fastest_shop_container_wrap_start', esc_attr($layout));
 ?>
 	
-		<?php if ( have_posts() ) : 
+		<?php if (have_posts()) :
 			/* Start the Loop */
-			while ( have_posts() ) :
+			while (have_posts()) :
 				the_post();
 
 				/*
@@ -27,7 +28,7 @@ $layout = fastest_shop_get_option('blog_layout');
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+				get_template_part('template-parts/content', get_post_type());
 
 			endwhile;
 
@@ -35,7 +36,7 @@ $layout = fastest_shop_get_option('blog_layout');
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part('template-parts/content', 'none');
 
 		endif;
 		?>
@@ -45,9 +46,9 @@ $layout = fastest_shop_get_option('blog_layout');
 
 <?php
 /**
-* Hook - container_wrap_end 		- 999
-*
-* @hooked fastest_shop_container_wrap_end
-*/
- do_action( 'fastest_shop_container_wrap_end',esc_attr( $layout ));
+ * Hook - container_wrap_end 		- 999
+ *
+ * @hooked fastest_shop_container_wrap_end
+ */
+do_action('fastest_shop_container_wrap_end', esc_attr($layout));
 get_footer();
