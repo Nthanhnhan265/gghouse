@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
 
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 /**
  * Proceed to checkout button
  *
@@ -18,11 +21,21 @@
  * @version 7.0.1
  */
 
+<<<<<<< HEAD
+if ( ! defined( 'ABSPATH' ) ) {
+=======
 if (! defined('ABSPATH')) {
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
 	exit; // Exit if accessed directly.
 }
 ?>
 
+<<<<<<< HEAD
+<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
+	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
+</a>
+=======
 <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="checkout-button button alt wc-forward<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>">
 	<?php esc_html_e('Proceed to checkout', 'woocommerce'); ?>
 </a>
+>>>>>>> c88a009dac2684aff072d10bee91726ed7f3dc4b
