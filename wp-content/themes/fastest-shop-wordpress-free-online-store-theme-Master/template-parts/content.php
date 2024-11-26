@@ -10,6 +10,7 @@
 
 ?>
 
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('fastest-shop-blogwrap')); ?>>
 
 	<?php

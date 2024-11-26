@@ -1,3 +1,4 @@
+
 2024-11-25T12:50:07+00:00 DEBUG POST: https://ads.tiktok.com/marketing_api/api/developer/app/create_auto_approve/
 
 {"business_platform":"PROD","smb_id":"tt4b_woocommerce_6744727f6bc46httplocalhostgghousewp-admin","smb_name":"PROD","redirect_url":"http:\/\/localhost\/gghouse\/wp-admin\/"}
