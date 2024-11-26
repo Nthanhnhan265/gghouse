@@ -136,7 +136,9 @@ get_header();
         object-fit: cover;
         margin-bottom: 1rem;
     }
-
+    .seller-item {
+        position: relative;
+    }
     .new-product-item {
         position: relative;
     }
