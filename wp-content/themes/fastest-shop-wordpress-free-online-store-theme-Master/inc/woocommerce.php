@@ -442,19 +442,24 @@ if (! function_exists('fastest_shop_woocommerce_cart_link')) {
 		}
 		add_action('woocommerce_shop_loop_item_title', 'fastest_shop_loop_content_before', 5);
 	}
-
-
 	if (! function_exists('fastest_shop_product_loop_actions')) {
-
-		/**
-		 * end the product content wrap
-		 */
 		function fastest_shop_product_loop_actions()
 		{
+			global $product;
 			echo '<ul class="product_actions_btn_wrap">';
+
+			// Nút Add to Cart
 			do_action('fastest_shop_add_to_cart_icon');
+
+			// Nút Chi tiết sản phẩm
 			echo '<li><a href="' . esc_url(get_permalink(get_the_ID())) . '" title="' . get_the_title(get_the_ID()) . '"><i class="icofont-external-link"></i><span></span></a></li>';
-			echo '<li><a href="' . esc_url(get_permalink(get_the_ID())) . '" title="' . get_the_title(get_the_ID()) . '"><i class="icofont-ui-love-add"></i></a></li>';
+
+			// Nút Yêu thích
+			echo '<li class="wishlist-button">';
+			echo '<a href="#" class="add-to-wishlist" data-product-id="' . esc_attr(get_the_ID()) . '" data-product-name="' . esc_attr(get_the_title()) . '">';
+			echo '<i class="icofont-heart wishlist-icon"></i>';
+			echo '</a>';
+			echo '</li>';
 
 			echo '</ul>';
 		}

@@ -311,6 +311,10 @@ ul.flat-support li:first-child:after {
 	z-index: 1;
 }
 
+.page-title-text {
+	backdrop-filter: brightness(80%) blur(2px);
+}
+
 #static_header_banner .background-effect {
 	position: absolute;
 	z-index: -999998;
@@ -1844,4 +1848,24 @@ ul.product_list_widget span {
 
 .form-allowed-tags {
 	padding-bottom: 15px;
+}
+
+.wishlist-icon {
+	transition: color 0.3s ease;
+}
+
+.wishlist-icon.active {
+	color: red;
+}
+
+.wishlist-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.wishlist-table th,
+.wishlist-table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
 }

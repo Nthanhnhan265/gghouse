@@ -146,3 +146,141 @@
     )
   })
 })(jQuery)
+document.addEventListener('DOMContentLoaded', function () {
+  // Hàm lấy danh sách sản phẩm yêu thích từ localStorage
+  function getWishlist() {
+    return JSON.parse(localStorage.getItem('wishlist') || '[]')
+  }
+
+  // Hàm lưu danh sách sản phẩm yêu thích vào localStorage
+  function saveWishlist(wishlist) {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist))
+  }
+
+  // Hàm kiểm tra sản phẩm có trong wishlist không
+  function isInWishlist(productId) {
+    const wishlist = getWishlist()
+    return wishlist.some((item) => item.id === productId)
+  }
+
+  // Hàm thêm/xóa sản phẩm khỏi wishlist
+  function toggleWishlist(productId, productName) {
+    let wishlist = getWishlist()
+    const index = wishlist.findIndex((item) => item.id === productId)
+
+    if (index !== -1) {
+      // Xóa sản phẩm khỏi wishlist
+      wishlist.splice(index, 1)
+    } else {
+      // Thêm sản phẩm vào wishlist
+      wishlist.push({
+        id: productId,
+        name: productName,
+        addedAt: new Date().toISOString(),
+      })
+    }
+
+    saveWishlist(wishlist)
+    updateWishlistUI()
+  }
+
+  // Cập nhật giao diện wishlist
+  function updateWishlistUI() {
+    const wishlist = getWishlist()
+    const wishlistButtons = document.querySelectorAll('.add-to-wishlist')
+
+    wishlistButtons.forEach((button) => {
+      const productId = button.getAttribute('data-product-id')
+      const wishlistIcon = button.querySelector('.wishlist-icon')
+
+      if (isInWishlist(productId)) {
+        wishlistIcon.classList.add('active')
+        wishlistIcon.style.color = 'red'
+      } else {
+        wishlistIcon.classList.remove('active')
+        wishlistIcon.style.color = ''
+      }
+    })
+
+    // Cập nhật số lượng sản phẩm trong wishlist (nếu có)
+    const wishlistCountElement = document.querySelector('.wishlist-count')
+    if (wishlistCountElement) {
+      wishlistCountElement.textContent = wishlist.length
+    }
+  }
+
+  // Bắt sự kiện click vào nút yêu thích
+  document.addEventListener('click', function (e) {
+    const wishlistButton = e.target.closest('.add-to-wishlist')
+    if (wishlistButton) {
+      e.preventDefault()
+      const productId = wishlistButton.getAttribute('data-product-id')
+      const productName = wishlistButton.getAttribute('data-product-name')
+      toggleWishlist(productId, productName)
+    }
+  })
+
+  // Tạo trang Wishlist
+  function createWishlistPage() {
+    const wishlist = getWishlist()
+    const wishlistContainer = document.getElementById('wishlist-container')
+
+    if (wishlistContainer) {
+      wishlistContainer.innerHTML = '' // Xóa nội dung cũ
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML =
+          '<p>Danh sách yêu thích của bạn đang trống.</p>'
+        return
+      }
+
+      const table = document.createElement('table')
+      table.classList.add('wishlist-table')
+      table.innerHTML = `
+<thead>
+                    <tr>
+                        <th>Sản Phẩm</th>
+                        <th>Ngày Thêm</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            `
+
+      wishlist.forEach((item) => {
+        const row = document.createElement('tr')
+        row.innerHTML = `
+                    <td>
+                        <a href="/product/${item.id}">${item.name}</a>
+                    </td>
+                    <td>${new Date(item.addedAt).toLocaleDateString()}</td>
+                    <td>
+                        <button class="remove-from-wishlist" data-product-id="${
+                          item.id
+                        }">Xóa</button>
+                    </td>
+                `
+        table.querySelector('tbody').appendChild(row)
+      })
+
+      wishlistContainer.appendChild(table)
+
+      // Xử lý xóa sản phẩm khỏi wishlist
+      wishlistContainer.addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-from-wishlist')) {
+          const productId = e.target.getAttribute('data-product-id')
+          toggleWishlist(productId)
+          createWishlistPage() // Làm mới trang
+        }
+      })
+    }
+  }
+
+  // Chạy các hàm khởi tạo
+  updateWishlistUI()
+
+  // Nếu đang ở trang wishlist
+  if (document.getElementById('wishlist-container')) {
+    createWishlistPage()
+  }
+})

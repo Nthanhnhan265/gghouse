@@ -124,7 +124,7 @@ class fastest_shop_Header_Layout
 		if (display_header_text() == true) {
 
 			$html .= '<h3><a href="' . esc_url(home_url('/')) . '" rel="home" class="site-title">';
-			$html .= get_bloginfo('name');
+			// $html .= get_bloginfo('name');
 			$html .= '</a></h3>';
 			$description = get_bloginfo('description', 'display');
 

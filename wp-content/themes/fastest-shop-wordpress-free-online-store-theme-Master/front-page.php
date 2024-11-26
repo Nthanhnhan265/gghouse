@@ -136,9 +136,11 @@ get_header();
         object-fit: cover;
         margin-bottom: 1rem;
     }
+
     .seller-item {
         position: relative;
     }
+
     .new-product-item {
         position: relative;
     }
@@ -404,8 +406,8 @@ get_header();
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
-                prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
-                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                prevArrow: '<button type="button" class="slick-prev"><</button>',
+                nextArrow: '<button type="button" class="slick-next">></button>',
                 responsive: [{
                         breakpoint: 1024,
                         settings: {

@@ -132,7 +132,7 @@ WooCommerce styles override
     position: absolute;
     z-index: 10;
     background-color: #E11500;
-    clip-path: polygon(0% 0%, 100% 0, 98% 92%, 49% 100%, 0 92%);
+    clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 50% 66%, 0 100%);
     min-height: 45px;
     display: flex;
     align-items: center;
@@ -690,24 +690,27 @@ table.variations td {
     border-radius: 3px;
     box-sizing: unset;
     /* padding: 12px 10px; */
-    padding: 4px 6px;
+    padding: 0 6px 30px 6px;
     margin: 0px;
     min-height: auto;
     min-width: auto;
-    line-height: 0px;
-    font-weight: normal;
+    /* line-height: 0px; */
+    font-weight: bolder;
     border: 1px solid #8F8F8F;
     text-transform: uppercase;
-    background: #fff;
-    color: #000;
+    background: #ff0000;
+    clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 50% 66%, 0 100%);
+    color: #ffffff;
     display: block;
     font-size: 12px;
-    top: 14px;
-    left: 8px;
+    top: 0px;
+    left: 100%;
+    /* transform: translateX(-100%); */
     letter-spacing: 2px;
     position: absolute;
     z-index: 99;
     right: auto;
+    text-align: center;
 }
 
 .page-content,

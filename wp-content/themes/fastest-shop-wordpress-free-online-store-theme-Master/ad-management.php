@@ -142,9 +142,12 @@ function save_advanced_ad_meta($post_id)
 add_action('save_post_ads_manager', 'save_advanced_ad_meta');
 
 // 4. Hiển thị quảng cáo thông minh
+
+
 function display_smart_ads($content)
 {
-    if (!is_single()) return $content;
+    // Kiểm tra nếu là trang chủ hoặc trang bài viết
+    if (!is_home() && !is_single()) return $content;
 
     // Lấy thiết bị người dùng
     $device_type = wp_is_mobile() ? 'mobile' : 'desktop';
@@ -197,7 +200,10 @@ function display_smart_ads($content)
                 $content .= $ad_content;
                 break;
             case 'after_paragraph':
-                $content = insert_smart_ad_paragraph($ad_content, $content);
+                // Chỉ áp dụng cho trang bài viết
+                if (is_single()) {
+                    $content = insert_smart_ad_paragraph($ad_content, $content);
+                }
                 break;
             case 'sidebar':
                 // Tích hợp với hook sidebar của theme
@@ -215,7 +221,9 @@ function display_smart_ads($content)
 
     return $content;
 }
+
 add_filter('the_content', 'display_smart_ads');
+
 
 // 5. Chèn quảng cáo thông minh hơn
 function insert_smart_ad_paragraph($ad_insertion, $content, $paragraph_id = 3)
