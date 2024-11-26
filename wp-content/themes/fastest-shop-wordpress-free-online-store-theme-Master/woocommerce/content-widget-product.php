@@ -1,5 +1,5 @@
-hello
 <?php
+
 /**
  * The template for displaying product widget entries.
  *
