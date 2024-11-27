@@ -1,5 +1,3 @@
-
-
 <?php
 
 /**
@@ -44,7 +42,7 @@ require get_template_directory() . '/inc/template-functions.php';
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {
-	require get_template_directory() . '/inc/jetpack.php';
+    require get_template_directory() . '/inc/jetpack.php';
 }
 
 /**
@@ -61,7 +59,7 @@ require get_template_directory() . '/inc/customizer/customizer.php';
 require get_template_directory() . '/inc/admin/admin-page.php';
 
 if (class_exists('WooCommerce')) {
-	require get_template_directory() . '/inc/woocommerce.php';
+    require get_template_directory() . '/inc/woocommerce.php';
 }
 
 
@@ -73,7 +71,7 @@ require_once get_template_directory() . '/ad-management.php';
 
 function enqueue_ad_styles()
 {
-	wp_enqueue_style('ad-styles', get_template_directory_uri() . '/ad-styles.css');
+    wp_enqueue_style('ad-styles', get_template_directory_uri() . '/ad-styles.css');
 }
 add_action('wp_enqueue_scripts', 'enqueue_ad_styles');
 
@@ -81,27 +79,27 @@ add_action('wp_enqueue_scripts', 'enqueue_ad_styles');
 function ad_popup_script()
 {
 ?>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const popup = document.getElementById('ad-popup');
-			const closeBtn = document.createElement('span');
-			closeBtn.innerHTML = '&times;';
-			closeBtn.classList.add('ad-popup-close');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('ad-popup');
+            const closeBtn = document.createElement('span');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.classList.add('ad-popup-close');
 
-			closeBtn.addEventListener('click', function() {
-				popup.classList.remove('show');
-			});
+            closeBtn.addEventListener('click', function() {
+                popup.classList.remove('show');
+            });
 
-			if (popup) {
-				popup.appendChild(closeBtn);
+            if (popup) {
+                popup.appendChild(closeBtn);
 
-				// Hiển thị popup sau 5 giây
-				setTimeout(() => {
-					popup.classList.add('show');
-				}, 5000);
-			}
-		});
-	</script>
+                // Hiển thị popup sau 5 giây
+                setTimeout(() => {
+                    popup.classList.add('show');
+                }, 5000);
+            }
+        });
+    </script>
 <?php
 }
 add_action('wp_footer', 'ad_popup_script');
@@ -109,33 +107,33 @@ add_action('wp_footer', 'ad_popup_script');
 function ad_click_tracking_script()
 {
 ?>
-	<script>
-		function trackAdClick(adId) {
-			// Gửi request tracking click
-			fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: 'action=track_ad_click&ad_id=' + adId
-			});
-		}
-	</script>
-<?php
+    <script>
+        function trackAdClick(adId) {
+            // Gửi request tracking click
+            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'action=track_ad_click&ad_id=' + adId
+            });
+        }
+    </script>
+    <?php
 }
 add_action('wp_footer', 'ad_click_tracking_script');
 
 // Xử lý AJAX tracking
 function handle_ad_click_tracking()
 {
-	if (isset($_POST['ad_id'])) {
-		$ad_id = intval($_POST['ad_id']);
-		$click_count = get_post_meta($ad_id, 'ad_click_count', true);
-		$click_count = $click_count ? $click_count + 1 : 1;
-		update_post_meta($ad_id, 'ad_click_count', $click_count);
-		wp_send_json_success();
-	}
-	wp_send_json_error();
+    if (isset($_POST['ad_id'])) {
+        $ad_id = intval($_POST['ad_id']);
+        $click_count = get_post_meta($ad_id, 'ad_click_count', true);
+        $click_count = $click_count ? $click_count + 1 : 1;
+        update_post_meta($ad_id, 'ad_click_count', $click_count);
+        wp_send_json_success();
+    }
+    wp_send_json_error();
 }
 add_action('wp_ajax_track_ad_click', 'handle_ad_click_tracking');
 add_action('wp_ajax_nopriv_track_ad_click', 'handle_ad_click_tracking');
@@ -143,42 +141,42 @@ add_action('wp_ajax_nopriv_track_ad_click', 'handle_ad_click_tracking');
 // Thêm cột thống kê click trong admin
 function add_ad_click_column($columns)
 {
-	$columns['ad_click_count'] = 'Số Lần Click';
-	return $columns;
+    $columns['ad_click_count'] = 'Số Lần Click';
+    return $columns;
 }
 add_filter('manage_ads_manager_posts_columns', 'add_ad_click_column');
 
 function display_ad_click_count($column, $post_id)
 {
-	if ($column == 'ad_click_count') {
-		$click_count = get_post_meta($post_id, 'ad_click_count', true);
-		echo $click_count ? $click_count : 0;
-	}
+    if ($column == 'ad_click_count') {
+        $click_count = get_post_meta($post_id, 'ad_click_count', true);
+        echo $click_count ? $click_count : 0;
+    }
 }
 add_action('manage_ads_manager_posts_custom_column', 'display_ad_click_count', 10, 2);
 
-function fastest_shop_product_social_share()
-{
-	global $post;
+// function fastest_shop_product_social_share()
+// {
+// 	global $post;
 
-	// Lấy URL và tiêu đề sản phẩm
-	$share_url = get_permalink($post->ID);
-	$share_title = get_the_title($post->ID);
+// 	// Lấy URL và tiêu đề sản phẩm
+// 	$share_url = get_permalink($post->ID);
+// 	$share_title = get_the_title($post->ID);
 
-	// Các nền tảng mạng xã hội
-	$facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($share_url);
-	$twitter_share = 'https://twitter.com/intent/tweet?url=' . urlencode($share_url) . '&text=' . urlencode($share_title);
-	$linkedin_share = 'https://www.linkedin.com/shareArticle?mini=true&url=' . urlencode($share_url) . '&title=' . urlencode($share_title);
+// 	// Các nền tảng mạng xã hội
+// 	$facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($share_url);
+// 	$twitter_share = 'https://twitter.com/intent/tweet?url=' . urlencode($share_url) . '&text=' . urlencode($share_title);
+// 	$linkedin_share = 'https://www.linkedin.com/shareArticle?mini=true&url=' . urlencode($share_url) . '&title=' . urlencode($share_title);
 
-	echo '<div class="product-social-share">';
-	echo '<span class="share-label">' . esc_html__('Share:', 'fastest-shop') . '</span>';
-	echo '<ul class="social-share-icons">';
-	echo '<li><a href="' . esc_url($facebook_share) . '" target="_blank"><i class="icofont-facebook"></i></a></li>';
-	echo '<li><a href="' . esc_url($twitter_share) . '" target="_blank"><i class="icofont-twitter"></i></a></li>';
-	echo '<li><a href="' . esc_url($linkedin_share) . '" target="_blank"><i class="icofont-linkedin"></i></a></li>';
-	echo '</ul>';
-	echo '</div>';
-}
+// 	echo '<div class="product-social-share">';
+// 	echo '<span class="share-label">' . esc_html__('Share:', 'fastest-shop') . '</span>';
+// 	echo '<ul class="social-share-icons">';
+// 	echo '<li><a href="' . esc_url($facebook_share) . '" target="_blank"><i class="icofont-facebook"></i></a></li>';
+// 	echo '<li><a href="' . esc_url($twitter_share) . '" target="_blank"><i class="icofont-twitter"></i></a></li>';
+// 	echo '<li><a href="' . esc_url($linkedin_share) . '" target="_blank"><i class="icofont-linkedin"></i></a></li>';
+// 	echo '</ul>';
+// 	echo '</div>';
+// }
 
 
 /***
@@ -186,7 +184,8 @@ function fastest_shop_product_social_share()
  * BLOG
  */
 
- function custom_search_orderby($query) {
+function custom_search_orderby($query)
+{
     if ($query->is_search && !is_admin()) {
         if (isset($_GET['orderby'])) {
             switch ($_GET['orderby']) {
@@ -203,36 +202,36 @@ function fastest_shop_product_social_share()
                     $query->set('orderby', 'relevance');
             }
         }
-               // Lọc theo ngày
-               if (isset($_GET['date']) && $_GET['date'] !== '') {
-                switch ($_GET['date']) {
-                    case 'this_month':
-                        $query->set('date_query', array(
-                            array(
-                                'year'  => date('Y'),
-                                'month' => date('m'),
-                                'day'   => date('d'),
-                                'compare' => '>='
-                            )
-                        ));
-                        break;
-                    case 'this_week':
-                        $query->set('date_query', array(
-                            array(
-                                'after' => '1 week ago'
-                            )
-                        ));
-                        break;
-                    case 'this_year':
-                        $query->set('date_query', array(
-                            array(
-                                'year' => date('Y'),
-                                'compare' => '='
-                            )
-                        ));
-                        break;
-                }
+        // Lọc theo ngày
+        if (isset($_GET['date']) && $_GET['date'] !== '') {
+            switch ($_GET['date']) {
+                case 'this_month':
+                    $query->set('date_query', array(
+                        array(
+                            'year'  => date('Y'),
+                            'month' => date('m'),
+                            'day'   => date('d'),
+                            'compare' => '>='
+                        )
+                    ));
+                    break;
+                case 'this_week':
+                    $query->set('date_query', array(
+                        array(
+                            'after' => '1 week ago'
+                        )
+                    ));
+                    break;
+                case 'this_year':
+                    $query->set('date_query', array(
+                        array(
+                            'year' => date('Y'),
+                            'compare' => '='
+                        )
+                    ));
+                    break;
             }
+        }
         // Lọc theo chuyên mục
         if (isset($_GET['category']) && $_GET['category'] !== '') {
             $query->set('category_name', sanitize_text_field($_GET['category']));
@@ -242,7 +241,7 @@ function fastest_shop_product_social_share()
         if (isset($_GET['author']) && $_GET['author'] !== '') {
             $query->set('author', intval($_GET['author']));
         }
-        
+
         // Lọc theo độ dài bài viết
         if (isset($_GET['length']) && $_GET['length'] !== '') {
             switch ($_GET['length']) {
@@ -288,7 +287,8 @@ add_filter('pre_get_posts', 'custom_search_orderby');
 /**
  * Đếm lượt xem cho bài viết
  */
-function set_post_views($post_id) {
+function set_post_views($post_id)
+{
     $count_key = 'post_views_count';
     $count = get_post_meta($post_id, $count_key, true);
     if ($count == '') {
@@ -304,7 +304,8 @@ function set_post_views($post_id) {
 /**
  * Lấy số lượt xem của bài viết
  */
-function get_post_views($post_id) {
+function get_post_views($post_id)
+{
     $count_key = 'post_views_count';
     $count = get_post_meta($post_id, $count_key, true);
     if ($count == '') {
@@ -318,7 +319,8 @@ function get_post_views($post_id) {
 /**
  * Tự động đếm lượt xem khi xem bài viết
  */
-function track_post_views($post_id) {
+function track_post_views($post_id)
+{
     if (!is_single()) return;
     if (empty($post_id)) {
         global $post;
@@ -331,7 +333,8 @@ add_action('wp_head', 'track_post_views');
 /**
  * Thêm cột lượt xem trong admin
  */
-function add_post_views_column($columns) {
+function add_post_views_column($columns)
+{
     $columns['post_views'] = 'Lượt xem';
     return $columns;
 }
@@ -340,7 +343,8 @@ add_filter('manage_posts_columns', 'add_post_views_column');
 /**
  * Hiển thị số lượt xem trong cột admin
  */
-function display_post_views_column($column, $post_id) {
+function display_post_views_column($column, $post_id)
+{
     if ($column === 'post_views') {
         echo get_post_views($post_id) . ' lượt xem';
     }
@@ -350,13 +354,15 @@ add_action('manage_posts_custom_column', 'display_post_views_column', 10, 2);
 /**
  * Cho phép sắp xếp theo lượt xem trong admin
  */
-function sort_post_views_column($columns) {
+function sort_post_views_column($columns)
+{
     $columns['post_views'] = 'post_views';
     return $columns;
 }
 add_filter('manage_edit-post_sortable_columns', 'sort_post_views_column');
 // Thêm vào functions.php
-function add_font_awesome() {
+function add_font_awesome()
+{
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 }
 add_action('wp_enqueue_scripts', 'add_font_awesome');
@@ -364,11 +370,12 @@ add_action('wp_enqueue_scripts', 'add_font_awesome');
 
 
 // Thêm chức năng bài viết liên quan
-function get_related_posts($post_id, $number_posts = 3) {
+function get_related_posts($post_id, $number_posts = 3)
+{
     $categories = get_the_category($post_id);
     if ($categories) {
         $category_ids = array();
-        foreach($categories as $individual_category) {
+        foreach ($categories as $individual_category) {
             $category_ids[] = $individual_category->term_id;
         }
         $args = array(
@@ -384,7 +391,8 @@ function get_related_posts($post_id, $number_posts = 3) {
 
 
 // Thêm shortcode hiển thị bài viết nổi bật
-function featured_posts_shortcode($atts) {
+function featured_posts_shortcode($atts)
+{
     $atts = shortcode_atts(array(
         'posts' => 3,
     ), $atts);
@@ -397,7 +405,7 @@ function featured_posts_shortcode($atts) {
     );
 
     $featured_posts = new WP_Query($args);
-    
+
     ob_start();
     if ($featured_posts->have_posts()) : ?>
         <div class="featured-posts">
@@ -418,14 +426,15 @@ function featured_posts_shortcode($atts) {
                 <?php endwhile; ?>
             </div>
         </div>
-    <?php endif;
+<?php endif;
     wp_reset_postdata();
     return ob_get_clean();
 }
 add_shortcode('featured_posts', 'featured_posts_shortcode');
 
 
-function custom_posts_per_page($query) {
+function custom_posts_per_page($query)
+{
     if (!is_admin() && $query->is_main_query()) {
         if (is_home() || is_archive() || is_search()) {
             $query->set('posts_per_page', 6); // Số bài viết trên mỗi trang
@@ -435,11 +444,12 @@ function custom_posts_per_page($query) {
 add_action('pre_get_posts', 'custom_posts_per_page');
 
 // Cập nhật thông tin nguời dùng 
-function handle_user_info_update() {
-    if ( isset($_POST['user_info_nonce']) && wp_verify_nonce($_POST['user_info_nonce'], 'update_user_info') ) {
+function handle_user_info_update()
+{
+    if (isset($_POST['user_info_nonce']) && wp_verify_nonce($_POST['user_info_nonce'], 'update_user_info')) {
         // Lấy ID người dùng hiện tại
         $user_id = get_current_user_id();
-        
+
         if ($user_id) {
             // Cập nhật tên
             if (isset($_POST['full_name'])) {
@@ -448,7 +458,7 @@ function handle_user_info_update() {
                     'first_name' => sanitize_text_field($_POST['full_name']),
                 ));
             }
-            
+
             // Cập nhật email
             if (isset($_POST['user_email'])) {
                 wp_update_user(array(
@@ -489,13 +499,13 @@ function handle_user_info_update() {
     }
 
     // Xử lý cập nhật mật khẩu
-    if ( isset($_POST['current_password']) && isset($_POST['new_password']) ) {
+    if (isset($_POST['current_password']) && isset($_POST['new_password'])) {
         $user = wp_get_current_user();
-        
+
         // Kiểm tra mật khẩu hiện tại
         if (wp_check_password($_POST['current_password'], $user->user_pass, $user->ID)) {
             wp_set_password($_POST['new_password'], $user->ID);
-            
+
             // Thông báo mật khẩu đã thay đổi thành công
             wp_redirect(add_query_arg('password_updated', 'true', get_permalink()));
             exit;
@@ -511,7 +521,8 @@ add_action('template_redirect', 'handle_user_info_update');
 
 // Create a new page template for the contact form
 add_filter('template_include', 'my_contact_form_template');
-function my_contact_form_template($template) {
+function my_contact_form_template($template)
+{
     if (is_page_template('contact-page.php')) {
         return plugin_dir_path(__FILE__) . 'contact-page.php';
     }
@@ -520,7 +531,8 @@ function my_contact_form_template($template) {
 
 // Enqueue the custom CSS and JS files for the contact form
 add_action('wp_enqueue_scripts', 'my_contact_form_assets');
-function my_contact_form_assets() {
+function my_contact_form_assets()
+{
     if (is_page_template('contact-form.php')) {
         wp_enqueue_style('my-contact-form-css', plugin_dir_url(__FILE__) . 'assets/css/contact-form.css');
         wp_enqueue_script('my-contact-form-js', plugin_dir_url(__FILE__) . 'assets/js/contact-form.js', array('jquery'), false, true);
@@ -528,17 +540,19 @@ function my_contact_form_assets() {
 }
 
 //  Hàm Slider 
-function enqueue_slick_slider() {
-    wp_enqueue_style( 'slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css' );
-    wp_enqueue_style( 'slick-slider-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css' );
-    wp_enqueue_script( 'slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), null, true );
+function enqueue_slick_slider()
+{
+    wp_enqueue_style('slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+    wp_enqueue_style('slick-slider-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+    wp_enqueue_script('slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), null, true);
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_slick_slider' );
+add_action('wp_enqueue_scripts', 'enqueue_slick_slider');
 // Hàm slider ảnh có mũi tên điều hướng 
-function enqueue_font_awesome() {
-    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
+function enqueue_font_awesome()
+{
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_font_awesome' );
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 
-add_action('woocommerce_single_product_summary', 'fastest_shop_product_social_share', 50);
+// add_action('woocommerce_single_product_summary', 'fastest_shop_product_social_share', 50);
 ?>
